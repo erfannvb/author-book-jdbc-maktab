@@ -1,0 +1,13 @@
+
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+f
+6src/main/java/org/example/connection/JdbcConstant.java,b\b\bba6413b3254df0404514647003ef0cf668c1730
+h
+8src/main/java/org/example/connection/JdbcConnection.java,2\a\2a83c0443e98719932b9e8128e966ca3be28b84a
+\
+,src/main/java/org/example/entity/Author.java,d\6\d653b3145bd7335d3f59996f03760bcd84f42da0
+Z
+*src/main/java/org/example/entity/Book.java,9\d\9d640f680c3940527f330789e8b2f3924565cf50
+j
+:src/main/java/org/example/repository/book/BookQueries.java,e\f\efd31f71b060dff9a0fd9b4bc882c3e60475a78b

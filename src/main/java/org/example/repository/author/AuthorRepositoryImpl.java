@@ -13,6 +13,8 @@ import static org.example.repository.author.AuthorQueries.SELECT_ALL;
 
 public class AuthorRepositoryImpl implements AuthorRepository {
 
+    private static final String CONNECTION_ERROR = "Error getting the connection.";
+
     private Connection connection = null;
 
     private PreparedStatement preparedStatement = null;
@@ -25,7 +27,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                System.out.println(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHOR);
 
@@ -54,7 +56,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                System.out.println(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHOR,
                     PreparedStatement.RETURN_GENERATED_KEYS);
@@ -90,7 +92,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                System.out.println(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHOR);
             preparedStatement.setLong(1, authorId);
@@ -125,7 +127,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                System.out.println(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(SELECT_ALL,
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -160,5 +162,34 @@ public class AuthorRepositoryImpl implements AuthorRepository {
             }
         }
         return authors;
+    }
+
+    @Override
+    public long loadId() {
+        long authorId = 0;
+        try {
+
+            connection = JdbcConnection.getConnection();
+            if (connection == null)
+                System.out.println(CONNECTION_ERROR);
+
+            preparedStatement = connection.prepareStatement(SELECT_ALL);
+
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next())
+                authorId = resultSet.getLong("author_id");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                JdbcConnection.closeConnection(connection);
+                JdbcConnection.closePreparedStatement(preparedStatement);
+                JdbcConnection.closeResultSet(resultSet);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return authorId;
     }
 }

@@ -12,4 +12,6 @@ public interface AuthorRepository {
 
     Author[] loadAll();
 
+    long loadId();
+
 }
