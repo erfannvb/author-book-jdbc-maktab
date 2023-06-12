@@ -2,6 +2,8 @@ package org.example.repository.author;
 
 import org.example.connection.JdbcConnection;
 import org.example.entity.Author;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,8 @@ import static org.example.repository.author.AuthorQueries.INSERT_INTO_AUTHOR;
 import static org.example.repository.author.AuthorQueries.SELECT_ALL;
 
 public class AuthorRepositoryImpl implements AuthorRepository {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthorRepositoryImpl.class);
 
     private static final String CONNECTION_ERROR = "Error getting the connection.";
 
@@ -27,7 +31,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println(CONNECTION_ERROR);
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHOR);
 
@@ -56,7 +60,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println(CONNECTION_ERROR);
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHOR,
                     PreparedStatement.RETURN_GENERATED_KEYS);
@@ -92,7 +96,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println(CONNECTION_ERROR);
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_AUTHOR);
             preparedStatement.setLong(1, authorId);
@@ -127,7 +131,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println(CONNECTION_ERROR);
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(SELECT_ALL,
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -171,7 +175,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println(CONNECTION_ERROR);
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(SELECT_ALL);
 

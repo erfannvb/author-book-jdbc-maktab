@@ -2,12 +2,19 @@ package org.example.repository.book;
 
 import org.example.connection.JdbcConnection;
 import org.example.entity.Book;
+import org.example.repository.author.AuthorRepositoryImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
 import static org.example.repository.book.BookQueries.*;
 
 public class BookRepositoryImpl implements BookRepository {
+
+    private static final Logger logger = LoggerFactory.getLogger(AuthorRepositoryImpl.class);
+
+    private static final String CONNECTION_ERROR = "Error getting the connection.";
 
     private Connection connection = null;
 
@@ -20,7 +27,7 @@ public class BookRepositoryImpl implements BookRepository {
         try {
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(INSERT_INTO_BOOK);
 
@@ -49,7 +56,7 @@ public class BookRepositoryImpl implements BookRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(SELECT_BOOK_BY_ID);
             preparedStatement.setLong(1, bookId);
@@ -84,7 +91,7 @@ public class BookRepositoryImpl implements BookRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(SELECT_ALL,
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -130,7 +137,7 @@ public class BookRepositoryImpl implements BookRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(DELETE_BOOK);
             preparedStatement.setLong(1, book.getBookId());
@@ -157,7 +164,7 @@ public class BookRepositoryImpl implements BookRepository {
 
             connection = JdbcConnection.getConnection();
             if (connection == null)
-                System.out.println("Error getting the connection.");
+                logger.info(CONNECTION_ERROR);
 
             preparedStatement = connection.prepareStatement(SELECT_ALL);
 
