@@ -5,13 +5,7 @@ h
 8src/main/java/org/example/connection/JdbcConnection.java,2\a\2a83c0443e98719932b9e8128e966ca3be28b84a
 f
 6src/main/java/org/example/connection/JdbcConstant.java,b\b\bba6413b3254df0404514647003ef0cf668c1730
-\
-,src/main/java/org/example/entity/Author.java,d\6\d653b3145bd7335d3f59996f03760bcd84f42da0
-Z
-*src/main/java/org/example/entity/Book.java,9\d\9d640f680c3940527f330789e8b2f3924565cf50
 j
 :src/main/java/org/example/repository/book/BookQueries.java,e\f\efd31f71b060dff9a0fd9b4bc882c3e60475a78b
 n
 >src/main/java/org/example/repository/author/AuthorQueries.java,7\8\78416c210eff077d000b6746d86bb4264933c572
-m
-=src/main/java/org/example/repository/book/BookRepository.java,8\1\81641006b3686d83de7870d60d6bac38d5cec8a0

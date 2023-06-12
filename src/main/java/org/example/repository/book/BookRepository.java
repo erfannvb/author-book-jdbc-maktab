@@ -6,6 +6,8 @@ public interface BookRepository {
 
     void save(Book book);
 
+    Long saveAndReturnBookId(Book book);
+
     Book load(Long bookId);
 
     Book[] loadAll();

@@ -2,7 +2,6 @@ package org.example.repository.book;
 
 import org.example.connection.JdbcConnection;
 import org.example.entity.Book;
-import org.example.repository.author.AuthorRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +11,7 @@ import static org.example.repository.book.BookQueries.*;
 
 public class BookRepositoryImpl implements BookRepository {
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthorRepositoryImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(BookRepositoryImpl.class);
 
     private static final String CONNECTION_ERROR = "Error getting the connection.";
 
@@ -47,6 +46,35 @@ public class BookRepositoryImpl implements BookRepository {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    @Override
+    public Long saveAndReturnBookId(Book book) {
+        long bookId;
+        try {
+
+            connection = JdbcConnection.getConnection();
+            if (connection == null)
+                logger.info(CONNECTION_ERROR);
+
+            preparedStatement = connection.prepareStatement(INSERT_INTO_BOOK,
+                    PreparedStatement.RETURN_GENERATED_KEYS);
+
+            preparedStatement.setString(1, book.getTitle());
+            preparedStatement.setDate(2, (Date) book.getPublishedYear());
+            preparedStatement.setLong(3, book.getAuthorId());
+
+            preparedStatement.execute();
+
+            resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            bookId = resultSet.getLong("book_id");
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return bookId;
     }
 
     @Override

@@ -55,7 +55,7 @@ public class AuthorRepositoryImpl implements AuthorRepository {
 
     @Override
     public Long saveAndReturnAuthorId(Author author) {
-        Long authorId;
+        long authorId;
         try {
 
             connection = JdbcConnection.getConnection();
