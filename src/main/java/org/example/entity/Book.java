@@ -10,16 +10,15 @@ public class Book {
 
     private Date publishedYear;
 
-    private Author author;
+    private Long authorId;
 
     public Book() {
     }
 
-    public Book(Long bookId, String title, Date publishedYear, Author author) {
-        this.bookId = bookId;
+    public Book(String title, Date publishedYear, Long authorId) {
         this.title = title;
         this.publishedYear = publishedYear;
-        this.author = author;
+        this.authorId = authorId;
     }
 
     public Long getBookId() {
@@ -46,11 +45,21 @@ public class Book {
         this.publishedYear = publishedYear;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Long getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", publishedYear=" + publishedYear +
+                ", authorId=" + authorId +
+                '}';
     }
 }

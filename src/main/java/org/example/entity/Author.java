@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import java.util.Arrays;
+
 public class Author {
 
     private Long authorId;
@@ -15,12 +17,10 @@ public class Author {
     public Author() {
     }
 
-    public Author(Long authorId, String firstName, String lastName, int age, Book[] books) {
-        this.authorId = authorId;
+    public Author(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.books = books;
     }
 
     public Long getAuthorId() {
@@ -61,5 +61,16 @@ public class Author {
 
     public void setBooks(Book[] books) {
         this.books = books;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", books=" + Arrays.toString(books) +
+                '}';
     }
 }
