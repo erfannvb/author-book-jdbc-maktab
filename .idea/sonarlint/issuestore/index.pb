@@ -9,3 +9,15 @@ j
 :src/main/java/org/example/repository/book/BookQueries.java,e\f\efd31f71b060dff9a0fd9b4bc882c3e60475a78b
 n
 >src/main/java/org/example/repository/author/AuthorQueries.java,7\8\78416c210eff077d000b6746d86bb4264933c572
+\
+,src/main/java/org/example/entity/Author.java,d\6\d653b3145bd7335d3f59996f03760bcd84f42da0
+Z
+*src/main/java/org/example/entity/Book.java,9\d\9d640f680c3940527f330789e8b2f3924565cf50
+b
+2src/main/java/org/example/service/BookService.java,4\e\4e0afb3f42ab32527a23feda117f6bd25e7844be
+d
+4src/main/java/org/example/service/AuthorService.java,0\8\084c87f87c6bf5d66415cdd8d9ec0d021847ba6b
+m
+=src/main/java/org/example/repository/book/BookRepository.java,8\1\81641006b3686d83de7870d60d6bac38d5cec8a0
+q
+Asrc/main/java/org/example/repository/author/AuthorRepository.java,6\d\6db1988f804e3fada611d58a78a8e0c02b2bd0a2

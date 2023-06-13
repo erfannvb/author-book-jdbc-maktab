@@ -137,6 +137,8 @@ public class AuthorRepositoryImpl implements AuthorRepository {
                     ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
+            resultSet = preparedStatement.executeQuery();
+
             int size = 0;
             resultSet.last();
             size = resultSet.getRow();
