@@ -3,14 +3,14 @@ package org.example.service;
 import org.example.entity.Book;
 import org.example.repository.book.BookRepositoryImpl;
 
-import java.util.Date;
 import java.util.Objects;
 
 public class BookService {
 
-    private BookRepositoryImpl bookRepository;
+    private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
 
-    public void addBook(String title, Date publishedYear, Long authorId) {
+    public void addBook(String title, int publishedYear, long authorId) {
+        bookRepository = new BookRepositoryImpl();
         Book book = new Book();
         book.setBookId(bookIdGenerator());
         book.setTitle(title);
@@ -20,7 +20,6 @@ public class BookService {
     }
 
     public Book[] authorBookList(Long authorId) {
-        bookRepository = new BookRepositoryImpl();
         Book[] books = bookRepository.loadAll();
         Book[] authorBooks = new Book[books.length];
         int count = 0;

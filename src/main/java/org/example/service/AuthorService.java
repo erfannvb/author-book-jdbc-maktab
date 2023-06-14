@@ -2,12 +2,15 @@ package org.example.service;
 
 import org.example.entity.Author;
 import org.example.repository.author.AuthorRepositoryImpl;
+import org.example.view.PrintList;
+
+import java.util.Arrays;
 
 public class AuthorService {
 
-    private AuthorRepositoryImpl authorRepository;
+    private AuthorRepositoryImpl authorRepository = new AuthorRepositoryImpl();
 
-    private BookService bookService;
+    private BookService bookService = new BookService();
 
     public void register(String firstName, String lastName, int age) {
         Author author = new Author();
@@ -24,8 +27,14 @@ public class AuthorService {
             authors[i].setBooks(bookService.authorBookList((long) (i + 1)));
         }
         for (Author author : authors) {
-            System.out.println(author.getFirstName() + " " + author.getLastName());
+            System.out.println(author.getFirstName() + " " + author.getLastName() + " " +
+                    Arrays.toString(author.getBooks()));
         }
+    }
+
+    public void sortAuthorFamily() throws Exception {
+        PrintList createPrintList = new PrintList();
+        createPrintList.sortAuthor(authorRepository.loadAll());
     }
 
     private long authorIdGenerator() {

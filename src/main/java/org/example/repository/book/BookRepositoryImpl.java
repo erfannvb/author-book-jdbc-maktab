@@ -31,7 +31,7 @@ public class BookRepositoryImpl implements BookRepository {
             preparedStatement = connection.prepareStatement(INSERT_INTO_BOOK);
 
             preparedStatement.setString(1, book.getTitle());
-            preparedStatement.setDate(2, (Date) book.getPublishedYear());
+            preparedStatement.setInt(2, book.getPublishedYear());
             preparedStatement.setLong(3, book.getAuthorId());
 
             preparedStatement.execute();
@@ -61,7 +61,7 @@ public class BookRepositoryImpl implements BookRepository {
                     PreparedStatement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, book.getTitle());
-            preparedStatement.setDate(2, (Date) book.getPublishedYear());
+            preparedStatement.setInt(2, book.getPublishedYear());
             preparedStatement.setLong(3, book.getAuthorId());
 
             preparedStatement.execute();
@@ -69,7 +69,6 @@ public class BookRepositoryImpl implements BookRepository {
             resultSet = preparedStatement.getGeneratedKeys();
             resultSet.next();
             bookId = resultSet.getLong("book_id");
-
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -140,7 +139,7 @@ public class BookRepositoryImpl implements BookRepository {
                 Book book = new Book();
                 book.setBookId(resultSet.getLong("book_id"));
                 book.setTitle(resultSet.getString("title"));
-                book.setPublishedYear(resultSet.getDate("published_year"));
+                book.setPublishedYear(resultSet.getInt("published_year"));
                 book.setAuthorId(resultSet.getLong("author_id"));
                 books[count++] = book;
             }
