@@ -12,7 +12,7 @@ public class Author {
 
     private int age;
 
-    private Book[] books = new Book[10];
+    private Book[] books = new Book[100];
 
     public Author() {
     }

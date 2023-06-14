@@ -8,14 +8,14 @@ public class Book {
 
     private String title;
 
-    private Date publishedYear;
+    private int publishedYear;
 
     private Long authorId;
 
     public Book() {
     }
 
-    public Book(String title, Date publishedYear, Long authorId) {
+    public Book(String title, int publishedYear, Long authorId) {
         this.title = title;
         this.publishedYear = publishedYear;
         this.authorId = authorId;
@@ -37,11 +37,11 @@ public class Book {
         this.title = title;
     }
 
-    public Date getPublishedYear() {
+    public int getPublishedYear() {
         return publishedYear;
     }
 
-    public void setPublishedYear(Date publishedYear) {
+    public void setPublishedYear(int publishedYear) {
         this.publishedYear = publishedYear;
     }
 
