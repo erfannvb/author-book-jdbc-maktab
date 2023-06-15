@@ -38,7 +38,7 @@ public class PrintList {
 
     public void sortAuthor(Author[] authors) {
 
-        int size = 0;
+        int size = 4;
 
         String[] lastName = new String[authors.length];
         for (int i = 0; i < authors.length; i++) {
@@ -49,19 +49,21 @@ public class PrintList {
         String temp;
         for (int i = 0; i < size; i++) {
             for (int j = i + 1; j < size; j++) {
-                authorTemp = authors[i];
-                temp = lastName[i];
-                authors[i] = authors[j];
-                lastName[i] = lastName[j];
-                authors[j] = authorTemp;
-                lastName[j] = temp;
+                if (lastName[i].compareTo(lastName[j]) > 0) {
+                    authorTemp = authors[i];
+                    temp = lastName[i];
+                    authors[i] = authors[j];
+                    lastName[i] = lastName[j];
+                    authors[j] = authorTemp;
+                    lastName[j] = temp;
+                }
             }
         }
 
         System.out.println("The author family in alphabetical order are: ");
+
         for (int i = 0; i < size; i++) {
-            System.out.println("ID:" + authors[i].getAuthorId() +
-                    "  family of this author is :" + authors[i].getLastName());
+            System.out.println("Last name of this author is :" + authors[i].getLastName());
         }
     }
 

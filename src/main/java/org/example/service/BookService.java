@@ -10,7 +10,6 @@ public class BookService {
     private BookRepositoryImpl bookRepository = new BookRepositoryImpl();
 
     public void addBook(String title, int publishedYear, long authorId) {
-        bookRepository = new BookRepositoryImpl();
         Book book = new Book();
         book.setBookId(bookIdGenerator());
         book.setTitle(title);
